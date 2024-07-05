@@ -1,7 +1,7 @@
 from llama_index.multi_modal_llms.gemini import GeminiMultiModal
 from llama_index.core.multi_modal_llms.generic_utils import load_image_urls
 from llama_index.core import SimpleDirectoryReader
-from images.json_extractor import extract, save_json_to_file
+from json_extractor import extract, save_json_to_file
 import time
 from dotenv import load_dotenv
 import os
@@ -143,5 +143,7 @@ response = mm_llm.complete(
 ).text
 end = time.time()
 
-print("Time taken: ", int(end-start),"sec \n" , response)
+print("Time taken: ", int(end-start),"sec \n" , "Table genereated!!")
 
+save_json_to_file(extract(response), "table.json")
+print("\n-------------------------\nOutput saved to table.json!!")

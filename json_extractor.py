@@ -17,7 +17,7 @@ def extract(input_text: str) -> str:
     if (match):
         return match.group(1).strip()
     else:
-        return None
+        raise("No JSON content found in the input text.")
 
 def save_json_to_file(json_content: str, file_path: str) -> None:
     """

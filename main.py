@@ -26,124 +26,42 @@ this is an example of how the output should look like:
         "location": "I13"
       }
     },
-    "10:15-11:45": {
-      "IA1.1": {
-        "course": "Reseaux ",
-        "instructor": "BEN FARAH Ahmed",
-        "location": "I12"
-      },
-      "IA1.2": {
-        "course": "Elements",
-        "instructor": "BEL HADJ IBRAHIM Anis",
-        "location": "E14"
-      }
-    },
-    "12:00-13:00": {},
-    "13:00-14:30": {
-      "IA1.1": {
-        "course": "Reseaux de Petri",
-        "instructor": "ABDELLAOUI Mehrez",
-        "location": "B02"
-      }
-    },
-    "14:45-16:15": {
-      "IA1.1": {
-        "course": "Elements",
-        "instructor": "BEL HADJ IBRAHIM Anis",
-        "location": "R03"
-      }
-    },
-    "16:30-18:00": {}
+    ...
+    ...
+    ...
   },
-  "Tuesday": {
-    "08:30-10:00": {
-      "IA1.1": {
-        "course": "Automatique ",
-        "instructor": "BEMBILI Sana",
-        "location": "E13"
-      }
-    },
-    "10:15-11:45": {
-      "IA1.1": {
-        "course": "Automatique ",
-        "instructor": "BEMBILI Sana",
-        "location": "E13"
-      }
-    },
-    "12:00-13:00": {},
-    "13:00-14:30": {
-      "IA1.2": {
-        "course": "Programmation Orientee Objet",
-        "instructor": "ABDELATTIF Takoua",
-        "location": "B04"
-      }
-    },
-    "14:45-16:15": {
-      "IA1.2": {
-        "course": "Elements",
-        "instructor": "BEL HADJ IBRAHIM Anis",
-        "location": "B04"
-      }
-    },
-    "16:30-18:00": {}
-  },
-  "Wednesday": {
-    "08:30-10:00": {
-      "IA1.1": {
-        "course": "Reseaux",
-        "instructor": "BEN ARBIA Anis",
-        "location": ""
-      }
-    },
-    "10:15-11:45": {
-      "IA1.1": {
-        "course": "Algorithmique ",
-        "instructor": "CHAINBI Walid",
-        "location": "B04"
-      }
-    },
-    "12:00-13:00": {},
-    "13:00-14:30": {},
-    "14:45-16:15": {},
-    "16:30-18:00": {}
-  },
-  "Thursday": {
-    "08:30-10:00": {
-      "IA1.1": {
-        "course": "Algorithmique ",
-        "instructor": "CHAINBI Walid",
-        "location": "B04"
-      }
-    },
-    "10:15-11:45": {
-      "IA1.1": {
-        "course": "Reseaux informatiques",
-        "instructor": "BEN ARBIA Anis",
-        "location": "R03"
-      }
-    },
-    "12:00-13:00": {},
-    "13:00-14:30": {
-      "IA1.1": {
-        "course": "Circuits Programm
+  ...
+  ...
+  ...
+}
 
 """
 
-# load image documents from urls
-#image_documents = load_image_urls(image_urls)
+def generate_timetable():
+    """
+    Generates a timetable in JSON format based on the provided prompt and image documents.
 
-# load image documents from local directory
-image_documents = SimpleDirectoryReader("images").load_data()
+    Returns:
+        None
+    """
+    # load image documents from local directory
+    image_documents = SimpleDirectoryReader("images").load_data()
 
-# non-streaming
-mm_llm = GeminiMultiModal(model_name="models/gemini-1.5-pro", api_key=API_KEY)
-start = time.time()
-response = mm_llm.complete(
-    prompt=PROMPT, image_documents=image_documents
-).text
-end = time.time()
+    mm_llm = GeminiMultiModal(model_name="models/gemini-1.5-pro", api_key=API_KEY)
+    start = time.time()
+    response = mm_llm.complete(
+        prompt=PROMPT, image_documents=image_documents
+    ).text
+    end = time.time()
 
-print("Time taken: ", int(end-start),"sec \n" , "Table genereated!!")
+    print("Time taken: ", int(end-start),"sec \n" , "Table generated!!")
 
-save_json_to_file(extract(response), "table.json")
-print("\n-------------------------\nOutput saved to table.json!!")
+    try:
+        extracted_json = extract(response)
+        save_json_to_file(extracted_json, "output/table.json")
+        print("\n-------------------------\nOutput saved to table.json!!")
+    except Exception as e:
+        print(f"Error extracting JSON content: {e}")
+
+generate_timetable()
+    

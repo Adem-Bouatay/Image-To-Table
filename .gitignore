@@ -2,3 +2,4 @@ images/*
 .venv/*
 .env
 output/*
+_pycache_/*

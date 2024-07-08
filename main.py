@@ -3,6 +3,8 @@ from llama_index.core.multi_modal_llms.generic_utils import load_image_urls
 from llama_index.core import SimpleDirectoryReader
 from json_extractor import extract, save_json_to_file
 import time
+from threading import Thread
+import animation
 from dotenv import load_dotenv
 import os
 
@@ -44,6 +46,9 @@ def generate_timetable():
     Returns:
         None
     """
+    
+    Thread(target=animation.animate, daemon=True).start()
+    
     # load image documents from local directory
     image_documents = SimpleDirectoryReader("images").load_data()
 

@@ -7,6 +7,7 @@ from visualiser import json_to_table
 from threading import Thread
 import animation
 from dotenv import load_dotenv
+from PIL import Image
 import os
 
 load_dotenv()
@@ -228,6 +229,12 @@ def generate_timetable():
         None
     """
     
+    try:
+      with Image.open("images/test.png") as img:
+        img.show()
+    except Exception as e:
+      print(f"Error opening image: {e}")
+      
     Thread(target=animation.animate, daemon=True).start()
     
     # load image documents from local directory

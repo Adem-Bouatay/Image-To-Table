@@ -28,7 +28,7 @@ def save_json_to_file(json_content: str, file_path: str) -> None:
         file_path (str): The path to the file to save the JSON content to.
     """
     try:
-        with open(file_path, "w") as file:
+        with open(file_path, "x") as file:
             file.write(json_content)
     except Exception as e:
         print(f"Error saving the content as json: {e}")

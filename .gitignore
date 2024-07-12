@@ -1,5 +1,5 @@
-images/*
-.venv/*
-.env
-output/*
-_pycache_/*
+build/
+dist/
+image_to_table.egg-info/*
+__pycache__/
+setup.py

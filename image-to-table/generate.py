@@ -3,16 +3,9 @@ from llama_index.core.multi_modal_llms.generic_utils import load_image_urls
 from llama_index.core import SimpleDirectoryReader
 from json_extractor import extract, save_json_to_file
 import time
-from visualiser import json_to_table
 from threading import Thread
 import animation
-from dotenv import load_dotenv
 from PIL import Image
-import os
-
-load_dotenv()
-
-API_KEY = os.getenv("API_KEY")
 
 PROMPT = """you are an ai that returns a time table in json format and in english from a given image
 this is an example of how the output should look like:
@@ -221,7 +214,7 @@ this is an example of how the output should look like:
 ```	
 """
 
-def generate_timetable():
+def generate_timetable(PATH:str,API_KEY:str)->None:
     """
     Generates a timetable in JSON format based on the provided prompt and image documents.
 
@@ -251,12 +244,9 @@ def generate_timetable():
 
     try:
         extracted_json = extract(response)
-        save_json_to_file(extracted_json, "output/table.json")
-        print("\n-------------------------\nOutput saved to table.json!!\n-------------------------\n")
-        #print the table to terminal
-        json_to_table("output/table.json")        
+        save_json_to_file(extracted_json, PATH)
+        print("\n-------------------------\nOutput saved to table.json!!")
     except Exception as e:
         print(f"Error extracting JSON content: {e}")
 
-generate_timetable()
     

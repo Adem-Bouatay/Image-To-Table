@@ -216,17 +216,18 @@ this is an example of how the output should look like:
 
 def generate_timetable(PATH:str,API_KEY:str)->None:
     """
-    Generates a timetable in JSON format based on the provided prompt and image documents.
+    Generates a timetable in JSON format based on the provided prompt and image in ./images directory.
 
     Returns:
         None
     """
     
+    """
     try:
       with Image.open("images/test.png") as img:
         img.show()
     except Exception as e:
-      print(f"Error opening image: {e}")
+      print(f"Error opening image: {e}")"""
       
     Thread(target=animation.animate, daemon=True).start()
     

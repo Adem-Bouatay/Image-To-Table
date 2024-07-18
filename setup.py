@@ -13,7 +13,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
-    packages=find_packages(),
+    packages=find_packages(include=['image_to_table', 'image_to_table.*']),
     install_requires=['llama-index', 'llama-index-multi-modal-llms-gemini', 'pillow', 'tabulate'],
     keywords=['python', 'image', 'json', 'MM LLM', 'AI'],
     classifiers=[

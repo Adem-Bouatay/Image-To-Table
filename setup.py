@@ -17,7 +17,7 @@ setup(
     install_requires=['llama-index', 'llama-index-multi-modal-llms-gemini', 'pillow', 'tabulate'],
     keywords=['python', 'image', 'json', 'MM LLM', 'AI'],
     classifiers=[
-        "Development Status :: Released",
+        "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",

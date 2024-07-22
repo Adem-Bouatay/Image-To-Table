@@ -14,10 +14,10 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    install_requires=['llama-index', 'llama-index-multi-modal-llms-gemini', 'pillow', 're', 'tabulate'],
+    install_requires=['llama-index', 'llama-index-multi-modal-llms-gemini', 'pillow', 'tabulate'],
     keywords=['python', 'image', 'json', 'MM LLM', 'AI'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: Released",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",

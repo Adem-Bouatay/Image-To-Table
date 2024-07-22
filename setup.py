@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 DESCRIPTION = 'Extracting timetable from image and converting it to JSON format.'
 LONG_DESCRIPTION = 'A package that allows to extract timetables from images and converting them to JSON format using Gemini MM-LLM.'
 

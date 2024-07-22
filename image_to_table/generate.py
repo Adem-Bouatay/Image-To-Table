@@ -1,11 +1,10 @@
 from llama_index.multi_modal_llms.gemini import GeminiMultiModal
 from llama_index.core.multi_modal_llms.generic_utils import load_image_urls
 from llama_index.core import SimpleDirectoryReader
-from json_extractor import extract, save_json_to_file
+from image_to_table.json_extractor import extract, save_json_to_file
 import time
 from threading import Thread
-import animation
-from PIL import Image
+from image_to_table.animation import animate, clear_animation
 
 PROMPT = """you are an ai that returns a time table in json format and in english from a given image
 this is an example of how the output should look like:
@@ -229,7 +228,7 @@ def generate_timetable(PATH:str,API_KEY:str)->None:
     except Exception as e:
       print(f"Error opening image: {e}")"""
       
-    Thread(target=animation.animate, daemon=True).start()
+    Thread(target=animate, daemon=True).start()
     
     # load image documents from local directory
     image_documents = SimpleDirectoryReader("images").load_data()

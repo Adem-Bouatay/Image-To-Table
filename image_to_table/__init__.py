@@ -1,4 +1,4 @@
-from animation import animate, clear_animation
-from generate import generate_timetable
-from json_extractor import extract, save_json_to_file
-from visualiser import json_to_table
+from image_to_table.animation import animate, clear_animation
+from image_to_table.generate import generate_timetable
+from image_to_table.json_extractor import extract, save_json_to_file
+from image_to_table.visualiser import json_to_table

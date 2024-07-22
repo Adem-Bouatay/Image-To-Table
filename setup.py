@@ -6,7 +6,7 @@ LONG_DESCRIPTION = 'A package that allows to extract timetables from images and 
 
 # Setting up
 setup(
-    name="image-to-table",
+    name="Image-to-Table",
     version=VERSION,
     author="Adem Bouatay",
     author_email="<adem.bouatay@eniso.u-sousse.tn>",

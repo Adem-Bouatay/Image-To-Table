@@ -7,7 +7,7 @@ Utilize a MultiModal Large Language Modal `GEMINI` to extract `table data` from 
 Install from PyPi using
 
 ```bash
-python -m pip install randomgen
+python -m pip install image-to-table
 ```
 
 ## Documentation

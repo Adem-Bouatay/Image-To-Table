@@ -213,12 +213,12 @@ this is an example of how the output should look like:
 ```	
 """
 
-def generate_timetable(PATH:str,API_KEY:str)->None:
+def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
     """
-    Generates a timetable in JSON format based on the provided prompt and image in ./images directory.
+    Generates a timetable in JSON format based on the provided prompt and image in from directory given.
 
     Returns:
-        None
+        None if JSON_PATH is not provided, otherwise returns the JSON content.
     """
     
     """
@@ -231,7 +231,7 @@ def generate_timetable(PATH:str,API_KEY:str)->None:
     Thread(target=animate, daemon=True).start()
     
     # load image documents from local directory
-    image_documents = SimpleDirectoryReader("images").load_data()
+    image_documents = SimpleDirectoryReader(DIR_PATH).load_data()
 
     mm_llm = GeminiMultiModal(model_name="models/gemini-1.5-pro", api_key=API_KEY)
     start = time.time()
@@ -244,7 +244,9 @@ def generate_timetable(PATH:str,API_KEY:str)->None:
 
     try:
         extracted_json = extract(response)
-        save_json_to_file(extracted_json, PATH)
+        if (not JSON_PATH):
+          return extracted_json
+        save_json_to_file(extracted_json, JSON_PATH)
         print("\n-------------------------\nOutput saved to table.json!!")
     except Exception as e:
         print(f"Error extracting JSON content: {e}")

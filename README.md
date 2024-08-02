@@ -11,6 +11,8 @@ python -m pip install randomgen
 ```
 
 ## Documentation
+You need a Gemini Api key to use this which you can get from : 
+https://ai.google.dev/gemini-api
 
 To generate the table and save it as json:
 

@@ -19,26 +19,38 @@ To generate the table and save it as json:
 ```bash
 from image_to_table import generate_timetable
 
-generate_timetable('output.json','API_KEY')
+json_output = generate_timetable(DIR_PATH="..",API_KEY='..',JSON_PATH=None) -> str
 ```
 
 the input image should be placed in images directory
 
-To visualize the json output:
+To visualize the json output you can use :
 
 ```bash
 from image_to_table import json_to_table
 
-json_to_table('output.json')
+json_to_table(json_input = json_output , number_char_cell = 18)
 ```
 
+or 
+
+```bash
+from image_to_table import json_to_table
+
+json_to_table(file_path= ".." , number_char_cell = 18)
+```
 this function prints the output to the console like the test below
 
 ## Testing
 
 Test with timetable:
 
-![test](https://github.com/user-attachments/assets/927f399b-2bd1-4e43-9096-b26ed4e7bed5)
+![Capture_decran_2024-08-02_165045](https://github.com/user-attachments/assets/9b286d4e-a828-46e4-abe5-158c7d211d98)
+
+
 
 Output:
-![2024-07-1615-51-24-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/38f36dc3-1f9c-4482-86f2-5f6b2867fec1)
+
+![table generation](https://github.com/user-attachments/assets/3ef866f0-a975-4e8e-8c55-b3d28829bd13)
+
+

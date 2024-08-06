@@ -232,8 +232,8 @@ def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
     
     # load image documents from local directory
     image_documents = SimpleDirectoryReader(DIR_PATH).load_data()
-
-    mm_llm = GeminiMultiModal(model_name="models/gemini-1.5-pro", api_key=API_KEY)
+    
+    mm_llm = GeminiMultiModal(model_name="models/gemini-1.5-flash", api_key=API_KEY)
     start = time.time()
     response = mm_llm.complete(
         prompt=PROMPT, image_documents=image_documents
@@ -245,6 +245,7 @@ def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
     try:
         extracted_json = extract(response)
         if (not JSON_PATH):
+          print(extracted_json)
           return extracted_json
         save_json_to_file(extracted_json, JSON_PATH)
         print("\n-------------------------\nOutput saved to table.json!!")

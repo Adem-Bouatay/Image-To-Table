@@ -245,11 +245,8 @@ def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
     try:
         extracted_json = extract(response)
         if (not JSON_PATH):
-          print(extracted_json)
           return extracted_json
         save_json_to_file(extracted_json, JSON_PATH)
         print("\n-------------------------\nOutput saved to table.json!!")
     except Exception as e:
         print(f"Error extracting JSON content: {e}")
-
-    

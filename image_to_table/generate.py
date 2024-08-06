@@ -213,12 +213,12 @@ this is an example of how the output should look like:
 ```	
 """
 
-def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
+def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str:
     """
     Generates a timetable in JSON format based on the provided prompt and image in from directory given.
 
     Returns:
-        None if JSON_PATH is not provided, otherwise returns the JSON content.
+        returns the JSON content.
     """
     
     """
@@ -248,5 +248,6 @@ def generate_timetable(DIR_PATH,API_KEY:str,JSON_PATH:str=None)->str|None:
           return extracted_json
         save_json_to_file(extracted_json, JSON_PATH)
         print("\n-------------------------\nOutput saved to table.json!!")
+        return extracted_json
     except Exception as e:
         print(f"Error extracting JSON content: {e}")
